@@ -1,94 +1,71 @@
-Copyright 2026 Jens Langecker 
+Copyright 2026 Jens Langecker
 Licensed under the GNU Affero General Public License v3.0
-see LICENCE.txt of https://www.gnu.org/licenses/agpl-3.0.en.html
+see LICENCE.txt or https://www.gnu.org/licenses/agpl-3.0.en.html
 SPDX-License-Identifier: AGPL-3.0-or-later
 
 Easy Encryption Tool - Version 0.9.6
 
-Beschreibung
+Description
 
-Skript zur einfachen Verschlüsselung zum sicheren und
-datenschutzkonformen Upload von Konfigurationsdateien und Datenbanken
-zum Support des SchulVerwaltungsProgramms. 
+Script for simple encryption for the secure and privacy-compliant upload of configuration files 
+and databases to support the School Management Program.
 
+Required program files
 
-Notwendige Programmdateien
+To use the tool you need the program package:
 
-Für die Anwendung des Tools benötigen Sie das Programmpaket:
-
-1. easy_decryption_tool.zip
-2. Die Schlüsseldatei im Verzeichnis keys
-3. openssl und 7zr im Verzeichnis bin
-
+    easy_decryption_tool.zip
+    The key file in the keys directory
+    openssl and 7zr in the bin directory
 
 Installation
 
-Entpacken Sie die Datei "easy_encryption_tool.zip" z.B. in Ihr
-HOME-Verzeichnis und wechseln Sie in das entstandene Verzeichnis 
-"easy_encryption_tool". Das Programm wird direkt im Verzeichnis
-ausgeführt. Die notwendige OpenSSL-Distribution ist im Verzeichnis 
-vorhanden, es ist keine zusätzliche Installation notwendig.
+Extract the file "easy_encryption_tool.zip", e.g., into your HOME directory, and change into the 
+resulting "easy_encryption_tool" directory. The program runs directly from that directory. The 
+required OpenSSL distribution is included in the directory; no additional installation is necessary.
 
-Kopieren Sie die Datei "svp-test-system.key" in das entpackte Verzeichnis, 
-wo sich auch die Datei "dialog.ps1" befindet.
+Copy the file "svp-test-system.key" into the extracted directory where "dialog.ps1" is located.
 
-Die Datei "svp-test-system.key" ist eine Schlüsseldatei, die es ermöglicht, 
-die verschlüsselten Dateien zu entschlüsseln. Sie ist deshalb dem 
-Programmpaket nicht beigelegt.
+The file "svp-test-system.key" is a key file that allows decryption of the encrypted files. It 
+is therefore not included in the program package.
 
+Usage
 
+Follow these steps to decrypt a file:
 
-Anwendung
+    Launch the program "easy-decrypt.bat" by double-clicking it. A window will open.
 
+If you run the tool for the first time, a warning dialog will appear. Click "More info" and "Run anyway". 
+This message will not appear on subsequent runs.
 
-Gehen Sie folgendermaßen vor, um eine Datei zu verschlüsseln:
- 
-1. Rufen Sie das Programm "easy-decrypt.bat" mit einem Doppelklick auf. Es öffnet
-sich ein Fenster.
+If no key files are installed, the program will exit with an error message.
 
-Wenn Sie das Tool zum ersten mal ausführen, so erscheint eine Warnmeldung. 
-Klicken Sie auf "Weitere Informationen" und "Trotzdem ausführen". Bei weiteren
-Aufrufen erscheint diese Meldung dann nicht mehr.
+    Click the "..." button to the right of the text field and select the .enc file to decrypt in the 
+	file dialog.
 
-Sollten keine Schlüsseldateien installiert sein, so bricht das Programm mit einer
-Fehlermeldung ab.
+    Click the "..." button for "Destination directory" and choose the target directory where the decrypted 
+	file should be written. Note that for data protection reasons the file must not be saved on a remote 
+	or cloud drive!
 
-2. Klicken Sie auf den Button "..." rechts neben dem Textfeld und wählen Sie
-im Dateidialog die zu entschlüsselnde Datei aus.
+    Enter the password for the private key in the password field.
 
-3. Klicken Sie bei "Zielverzeichnis" auf den Button "..." und wählen Sie das 
-gewünschte Zielverzeichnis aus, in das die entschlüsselte Datei geschrieben
-werden soll. Beachten Sie, dass aus Datenschutzgründen die Datei nicht auf 
-einem Remote- bzw. Cloud-Laufwerk abgespeichert werden darf!
+    Click "OK".
 
-4. Geben Sie im Passwortfeld das Passwort für den Privaten Schlüssel ein.
+Alternative key
 
-5. Klicken Sie auf "OK". 
+If you need to decrypt a file whose corresponding key is not configured as the default, click "Alternative 
+key file" and select the matching key in the file dialog. Enter the password for that key in the password field.
 
+If you decide you do not need the alternative key after selecting it, simply uncheck the checkbox.
 
-Alternative Schlüssel
+Key import
 
-Sollten Sie eine Datei entschlüsseln wollen, zu der der zu passende Schlüssel 
-nicht als Standard eingerichtet ist, so klicken Sie auf "Alternative Schlüsseldatei"
-und wählen Sie den passenden Schlüssel im Filedialog aus. Geben Sie im Passwortfeld 
-das zu dieser Datei passende Passwort ein.
+Run schluesselimport.bat. A window with an input form for a .eda or .edk file will open.
 
-Sollte man die alternative Schlüsseldatei doch nicht benötigen, so muss trotz erfolgter
-Auswahl einer Schlüsseldatei nur die Checkbox disabled werden.
+First installation: No key is present yet. Use the '...' button to select a .eda file. This will add the key 
+and a configuration file 'edt.ini'. You can then decrypt files that were encrypted with the corresponding key.
 
+Key update: Archives with the .edk extension are encrypted and signed. They can be sent by email, which 
+simplifies distribution.
 
-Schlüsselimport
-
-Führen Sie das Programm schluesselimport.bat aus. Es startet ein Fenster mit einer Eingabemaske für eine
-.eda bzw. .edk-Datei.
-
-Erstinstallation: Es liegt noch kein Schlüssel vor. Wählen Sie mit '...' eine .eda-Datei aus. 
-	Diese fügt die Schüssel und eine Konfigurationsdatei 'edt.ini' hinzu. Nun können Dateien,
-	die mit dem zugehörigen Schlüssel verschlüsselt wurden entschlüsselt werden.
-
-Schlüsselupdate: Die Archive mit der Endung .edk sind verschlüsselt und signiert. Somit können 
-	Archive per Email versendet werden, was die Verteilung vereinfacht.
-	
-
-(C) 2024/25/26 J. Langecker 
-
+(C) 2024/25/26 J. Langecker
