@@ -1,0 +1,56 @@
+# Copyright 2026 Jens Langecker 
+# Licensed under the GNU Affero General Public License v3.0
+# see LICENCE.txt of https://www.gnu.org/licenses/agpl-3.0.en.html
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+Version
+
+0.1  Test version with option to select pubkey for encryption and database file.
+
+0.2  Added batch wrapper script to run PowerShell script.
+
+0.3  Changed encryption method from rsautl public key to S/MIME with certificate to allow encryption of arbitrarily large files.
+
+0.3.1  Changed .enc filename structure to include the original file extension so it can be restored.
+
+0.3.2  Integrated the OpenSSL distribution into the tool directory tree to avoid requiring users to install OpenSSL. Adjusted the 
+PS1 script to call openssl from the bundled directory.
+
+0.3.3  Added a message box that indicates successful encryption.
+
+0.3.4  Checked the expiration date of the certificate used to prevent using expired certificates and tools.
+
+0.3.5  Inserted the expiration date of the certificate used into the filename to make the key easier to identify.
+
+0.3.6  Switched to a self-extracting EXE so no installation is required
+
+0.3.7  Design adjustments for easier user guidance
+
+0.3.8  Added checkbox to reveal the encrypted file in the file browser
+
+0.3.9  Changed to AES-192 for performance reasons; AES-192 is approved for Top Secret
+
+0.3.9.1  Removed .pdb debug files to minimize size
+
+0.9  Switched to production certificate
+
+0.9.1  Added splitting mechanism to support files >1 GB
+
+0.9.2  Switched file cipher to CMS instead of S/MIME for future support of EC certificates 
+(S/MIME properly supports only classic DSA/RSA). Added additional status messages to the console so users
+can track progress if needed. Expanded FileCount to 4 digits for compatibility with Linux split.
+
+0.9.3  Adjusted split-mode file size to the maximum allowed by SVP=NextCloud (2024^3 -> 1000^3).
+
+0.9.9  Code review for pre-1.0 release
+
+0.9.10  Added the SVP logo
+
+0.9.11  Caught invalid filenames containing "__", which are required for filename restoration; handled 7z and rar multi-file archives. RTFM issue.
+
+0.9.12  Fixed issues with paths that contained a dot in the name, which caused errors when selecting files to encrypt. The shell window remains 
+open as a status window so progress can be followed. Upgraded OpenSSL to version 3.4.2.
+
+0.9.13  Handled possible configuration or usage errors: empty or incorrect source files or target directories, incorrect entries in the config file. 
+The script exits with an error message. Blank lines are ignored and no longer cause errors. "#" is used as a comment character for whole lines and 
+for comments after parameters. Set default values when certain config values are missing.

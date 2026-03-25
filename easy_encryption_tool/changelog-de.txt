@@ -1,0 +1,66 @@
+# Copyright 2026 Jens Langecker 
+# Licensed under the GNU Affero General Public License v3.0
+# see LICENCE.txt of https://www.gnu.org/licenses/agpl-3.0.en.html
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+Version
+
+0.1	Testerversion mit Auswahl Pubkey zum Verschlüsseln und Datenbankdatei.
+	
+0.2	Batch-Wrapper-Script hinzugefügt, um Powershell-Script auszuführen
+	
+0.3	Änderung Verschlüssungsverfahren von rsautl pubkey auf smime mit Zertifikat um beliebig große Dateien zu verschlüsseln.
+	
+0.3.1	Änderung Aufbau Dateinamen .enc-Datei um ursprüngliche Dateiendung wiederherzustellen
+	
+0.3.2	Integration der OpenSSL-Distribution in Tool-Verzeichnisbaum, um Installation von OpenSSL durch User zu vermeiden. Anpassung des ps1-Skriptes zum Aufruf von openssl aus dem Dateibaum.
+
+0.3.3	Hinzufügen einer MessageBox die erfolgreiches Verschlüsseln anzeigt.
+
+0.3.4	Prüfung des Ablaufdatums des verwendeten Zertifikates um die Verwendung veralteter Zertifikate und Tools 
+zu vermeiden. 
+
+0.3.5	Einfügen des Ablaufdatums des verwendeten Zertifikates in den Dateinamen, damit der verwendete Schlüssel leichter gefunden werden kann.
+
+0.3.6	Umstellung auf selbstentpackende EXE-Datei, so dass keine Installation nötig ist.
+
+0.3.7   Designanpassungen für einfachere Benutzerführung
+
+0.3.8	Hinzufügen der Checkbox um verschlüsselte Datei im Filebrower anzuzeigen.
+
+0.3.9	 Änderung auf aes-192 aus Performancegründen. aes192 für TopSecret zugelassen.
+
+0.3.9.1	Entfernen der .pdb debugging Dateien um Größe zu minimieren.
+
+0.9	Umstellung auf Produktivzertifikat.
+
+0.9.1	Splitting Mechanismus hinzugefügt für die Unterstützung von Dateien >1GB.
+
+0.9.2	Umstellung der File-Cipher auf cms statt smime für zukünftigen Support von EC-Zertifikaten 
+	(S-MIME unterstützt nur klassisches DSA/RSA richtig). 
+	Zusätzliche Statusmeldungen auf Konsole ausgeben, damit Nutzer gegebenenfalls den Fortschritt
+	verfolgen können.
+	Erweiterung FileCount auf 4 Stellen für Kompartibilität mit Linux split. 
+
+0.9.3	Anpassung Dateigrößee im Splitmode auf maximale zulässige Größe der SVP=NextCloud. (2024^3 -> 1000^3).
+
+0.9.9	Codereview zur Pre 1.0-Version
+
+0.9.10	Hinzufügen des SVP-Logos.
+
+0.9.11	Abfangen fehlerhafter Dateinamen mit __, da diese für die Wiederherstellung des Dateinamens notwendig sind
+		Abfangen von 7z- und rar-Multidateiarchiven. RTFM-Problematik.
+		
+0.9.12	Probleme mit Pfaden gefixt, die im Namen einen Punkt enthielten. Zusammen mit dem Punkt in den Dateinamen 
+	einen Fehler in der Auswahl der zu verschlüsselnden Datei. Shellfenster bleibt als Statusfenster auf, so 
+	dass der Fortschritt verfolgt werden kann.
+	Upgrade OpenSSL auf Version 3.4.2
+		
+0.9.13	Mögliche Fehler in der Konfiguration oder Benutzung abgefangen: Leere oder falsche Quelldateien bzw. Zielverzeichnisse,
+	falsche Angaben im Configfile. Das Skript steigt mit einer Fehlermeldung aus. 
+	Leerzeilen werden ignoriert und führen nicht mehr zum Fehler. # Wurde als Kommentarzeichen für ganze Zeilen und als 
+	Kommentar hinter den Parametern eingesetzt. 
+	Setzen von Default-werten, wenn bestimmte Werte in der Config fehlen.
+
+
+
